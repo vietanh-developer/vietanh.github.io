@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>Chicken Guy | Linkbio Uy Tín</title>
+  <!-- Google Fonts & simple reset -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #fef9e8 0%, #fff5e6 100%);
+      font-family: 'Inter', sans-serif;
+      color: #2c2418;
+      padding: 24px 20px 60px;
+      min-height: 100vh;
+    }
+
+    /* container chính */
+    .linkbio-container {
+      max-width: 560px;
+      margin: 0 auto;
+      border-radius: 48px;
+    }
+
+    /* header avatar + tên */
+    .profile {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .avatar {
+      background: linear-gradient(135deg, #ffb347, #ff7e05);
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 30px -12px rgba(255, 110, 0, 0.3);
+      border: 3px solid #fff6e8;
+    }
+
+    .avatar i {
+      font-size: 58px;
+      color: white;
+      filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.1));
+    }
+
+    .display-name {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      background: linear-gradient(120deg, #e05e00, #f5a623);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 8px;
+    }
+
+    .bio-tag {
+      background: #fff1e0;
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 60px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #c25d00;
+      backdrop-filter: blur(2px);
+      box-shadow: inset 0 0 0 1px rgba(255,160,50,0.3), 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    .bio-tag i {
+      margin-right: 6px;
+      font-size: 12px;
+    }
+
+    /* intro text giống như mô tả */
+    .message-card {
+      background: #ffffffdd;
+      backdrop-filter: blur(4px);
+      background: rgba(255, 250, 240, 0.9);
+      border-radius: 32px;
+      padding: 20px 24px;
+      margin-bottom: 28px;
+      border: 1px solid rgba(255, 180, 80, 0.4);
+      box-shadow: 0 12px 24px -12px rgba(0,0,0,0.08);
+    }
+
+    .greeting {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #b65300;
+    }
+
+    .greeting i {
+      font-size: 22px;
+    }
+
+    .intro-text {
+      font-size: 15px;
+      line-height: 1.45;
+      font-weight: 500;
+      color: #3a2c1c;
+      margin-bottom: 16px;
+    }
+
+    .highlight {
+      background: #fff0db;
+      padding: 12px 16px;
+      border-radius: 24px;
+      font-weight: 600;
+      font-size: 14px;
+      color: #b64900;
+      border-left: 4px solid #ff8c2e;
+      margin-top: 10px;
+    }
+
+    .highlight i {
+      margin-right: 8px;
+      color: #f57c00;
+    }
+
+    /* button style - các dịch vụ */
+    .service-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .service-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: white;
+      padding: 18px 24px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      border: 1px solid #ffe0bb;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.02);
+    }
+
+    .service-btn:hover {
+      transform: translateY(-3px);
+      border-color: #ffb96a;
+      box-shadow: 0 16px 24px -12px rgba(245, 125, 0, 0.25);
+      background: #fffbf5;
+    }
+
+    .btn-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .btn-icon {
+      width: 48px;
+      height: 48px;
+      background: #fff2e3;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      color: #e56e1a;
+    }
+
+    .btn-info h4 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #2c2418;
+      margin-bottom: 4px;
+    }
+
+    .btn-info p {
+      font-size: 13px;
+      color: #886a44;
+      font-weight: 500;
+    }
+
+    .arrow-icon {
+      color: #ff9142;
+      font-size: 20px;
+      opacity: 0.7;
+      transition: 0.2s;
+    }
+
+    .service-btn:hover .arrow-icon {
+      opacity: 1;
+      transform: translateX(4px);
+    }
+
+    /* badge uy tín */
+    .trust-badge {
+      background: linear-gradient(110deg, #fff3e0, #fff8ef);
+      border-radius: 48px;
+      padding: 16px 20px;
+      text-align: center;
+      margin: 28px 0 24px;
+      border: 1px solid #ffddb0;
+      box-shadow: 0 6px 12px -8px rgba(0,0,0,0.05);
+    }
+
+    .trust-badge i {
+      font-size: 28px;
+      color: #ffaa44;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    .trust-text {
+      font-weight: 800;
+      font-size: 16px;
+      letter-spacing: 0.3px;
+      color: #b34e1a;
+      display: inline-block;
+    }
+
+    .trust-sub {
+      font-size: 12px;
+      font-weight: 500;
+      color: #a57248;
+      margin-top: 6px;
+    }
+
+    /* contact section (ib) */
+    .contact-section {
+      background: #2c2418;
+      border-radius: 48px;
+      padding: 8px 8px 8px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+      box-shadow: 0 16px 28px -12px rgba(0,0,0,0.2);
+    }
+
+    .contact-text {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #fadcb9;
+    }
+
+    .contact-text i {
+      font-size: 28px;
+      color: #ffb05a;
+    }
+
+    .contact-text span {
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .contact-btn {
+      background: #ff9142;
+      padding: 12px 26px;
+      border-radius: 60px;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: 0.2s;
+      font-size: 15px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 14px rgba(255, 110, 0, 0.3);
+    }
+
+    .contact-btn:hover {
+      background: #e57c2c;
+      transform: scale(0.97);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    /* footer */
+    .footer-note {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 12px;
+      color: #bc946e;
+      font-weight: 500;
+    }
+
+    /* hiệu ứng responsive */
+    @media (max-width: 480px) {
+      body {
+        padding: 16px 16px 40px;
+      }
+      .service-btn {
+        padding: 14px 20px;
+      }
+      .btn-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 22px;
+      }
+      .btn-info h4 {
+        font-size: 16px;
+      }
+      .contact-section {
+        padding: 12px 16px;
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+      }
+      .contact-btn {
+        justify-content: center;
+      }
+    }
+
+    /* link cơ bản */
+    a {
+      text-decoration: none;
+    }
+
+    /* làm nổi bật dòng chữ "Chicken Guy" */
+    .chicken-highlight {
+      font-weight: 800;
+      background: linear-gradient(145deg, #ff7b2c, #ffc285);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+  </style>
+</head>
+<body>
+<div class="linkbio-container">
+  
+  <!-- Ảnh đại diện + tên thương hiệu -->
+  <div class="profile">
+    <div class="avatar">
+      <i class="fas fa-drumstick-bite"></i> <!-- icon gà chiên -->
+    </div>
+    <div class="display-name">
+      Chicken Guy
+    </div>
+    <div class="bio-tag">
+      <i class="fas fa-check-circle"></i> Dzai • Uy Tín
+    </div>
+  </div>
+
+  <!-- Lời nhắn giống như yêu cầu: "Hello Bạn Tới Linkbio của Chicken Guy Dzai Uy Tín ..." -->
+  <div class="message-card">
+    <div class="greeting">
+      <i class="fas fa-hand-peace"></i> 
+      <span>Hello Bạn Tới Linkbio của <strong class="chicken-highlight">Chicken Guy Dzai Uy Tín</strong></span>
+    </div>
+    <div class="intro-text">
+      Bạn có thể nhờ tui <strong>cây xu 8 Ball Pool</strong> hộ hoặc mua <strong>key iOSViet, key DeltaForce</strong> — chỉ cần ib tui ở ngay phía dưới nha!
+    </div>
+    <div class="highlight">
+      <i class="fas fa-bolt"></i> CHÚNG TÔI LUÔN ĐẶT UY TÍN, THƯƠNG HIỆU LÊN HÀNG ĐẦU
+    </div>
+  </div>
+
+  <!-- CÁC DỊCH VỤ / SẢN PHẨM (giống như cây xu, key, deltaforce) -->
+  <div class="service-grid">
+    <!-- 8 Ball Pool - cây xu -->
+    <a href="#" class="service-btn" id="eightBallLink">
+      <div class="btn-left">
+        <div class="btn-icon"><i class="fas fa-cubes"></i></div>
+        <div class="btn-info">
+          <h4>Cây xu 8 Ball Pool</h4>
+          <p>Nhận xu, hỗ trợ nạp nhanh • uy tín hàng đầu</p>
+        </div>
+      </div>
+      <div class="arrow-icon"><i class="fas fa-chevron-right"></i></div>
+    </a>
+
+    <!-- key iOSViet -->
+    <a href="#" class="service-btn" id="iosvietLink">
+      <div class="btn-left">
+        <div class="btn-icon"><i class="fab fa-apple"></i></div>
+        <div class="btn-info">
+          <h4>Key iOSViet</h4>
+          <p>Mua key chính hãng, giá tốt, hỗ trợ 24/7</p>
+        </div>
+      </div>
+      <div class="arrow-icon"><i class="fas fa-chevron-right"></i></div>
+    </a>
+
+    <!-- key DeltaForce -->
+    <a href="#" class="service-btn" id="deltaLink">
+      <div class="btn-left">
+        <div class="btn-icon"><i class="fas fa-gamepad"></i></div>
+        <div class="btn-info">
+          <h4>Key DeltaForce</h4>
+          <p>Delta Force key bản quyền, code nhập game</p>
+        </div>
+      </div>
+      <div class="arrow-icon"><i class="fas fa-chevron-right"></i></div>
+    </a>
+  </div>
+
+  <!-- Uy tín - thương hiệu nhấn mạnh -->
+  <div class="trust-badge">
+    <i class="fas fa-medal"></i>
+    <span class="trust-text">THƯƠNG HIỆU UY TÍN #1</span>
+    <div class="trust-sub">✓ Cam kết giá tốt ✓ Hỗ trợ nhiệt tình ✓ Bảo hành key</div>
+  </div>
+
+  <!-- IB (liên hệ) ngay phía dưới như yêu cầu: "có thể ib tui ở ngay phía dưới" -->
+  <div class="contact-section" id="contactSection">
+    <div class="contact-text">
+      <i class="fab fa-facebook-messenger"></i>
+      <span>Liên hệ ngay — IB tư vấn 24/7</span>
+    </div>
+    <a href="#" class="contact-btn" id="messengerBtn">
+      <i class="fab fa-facebook-messenger"></i> Nhắn tin ngay
+    </a>
+  </div>
+
+  <div class="footer-note">
+    <i class="fas fa-shield-alt"></i> Chicken Guy • Dịch vụ số 1 • Uy tín xây dựng thương hiệu
+  </div>
+</div>
+
+<script>
+  (function() {
+    // Mặc định các đường dẫn mẫu — bạn có thể thay link thật tại đây
+    // giả lập hành động nhấn (thông báo hoặc chuyển hướng đến mess / zalo tùy thích)
+    // Vì demo index giống hình mẫu, nên dùng alert cho thân thiện, nhưng bạn có thể sửa link thực tế.
+
+    // 1. Nút cây xu 8 ball pool
+    const eightBall = document.getElementById('eightBallLink');
+    if (eightBall) {
+      eightBall.addEventListener('click', (e) => {
+        e.preventDefault();
+        // Thay bằng link liên hệ / mua hàng thực tế
+        // Ví dụ mở messenger hoặc Zalo
+        alert("📲 Liên hệ Chicken Guy để nhận cây xu 8 Ball Pool giá ưu đãi!\n\nInbox qua Messenger hoặc Zalo: 0988xxx (demo)");
+        // Bạn có thể gán link thật: window.open("https://m.me/yourpage", "_blank");
+      });
+    }
+
+    // 2. Key iOSViet
+    const iosViet = document.getElementById('iosvietLink');
+    if (iosViet) {
+      iosViet.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert("🍎 Mua key iOSViet chính hãng – Giá tốt nhất thị trường, ib ngay để được tư vấn!");
+        // window.open("https://yourstore.com/iosviet", "_blank");
+      });
+    }
+
+    // 3. Key DeltaForce
+    const deltaForce = document.getElementById('deltaLink');
+    if (deltaForce) {
+      deltaForce.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert("🎮 Key Delta Force bản quyền - Sẵn sàng chiến đấu. Liên hệ Chicken Guy để có giá rẻ nhất!");
+      });
+    }
+
+    // 4. Nút ib (Messenger) dưới cùng
+    const messengerBtn = document.getElementById('messengerBtn');
+    if (messengerBtn) {
+      messengerBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        // Thay link facebook messenger cá nhân hoặc fanpage
+        // Ví dụ: window.open("https://m.me/ChickenGuyOfficial", "_blank");
+        alert("💬 Kết nối ngay với Chicken Guy qua Messenger hoặc Zalo:\n\n📱 Facebook: Chicken Guy Official\n📞 SĐT/Zalo: 09xx.xxx.xxx");
+        // Mở link thực tế:
+        // window.location.href = "https://m.me/yourpageid";
+      });
+    }
+
+    // Optional: nếu click vào contact-section có thể làm gì đó, nhưng hiện tại chỉ nút chính
+    // Để tăng tính tương tác, giống như bạn muốn "ib tui ở ngay phía dưới"
+    const contactDiv = document.getElementById('contactSection');
+    if (contactDiv && !messengerBtn) { 
+      // fallback nhưng không cần, vì đã có nút
+    }
+  })();
+</script>
+
+</body>
+</html>
